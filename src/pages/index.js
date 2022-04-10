@@ -35,7 +35,6 @@ const IndexPage = ({ data }) => {
         stickylogo={maconData.logoBlack}
       />
 
-      {/* {typeof window !== "undefined" ? ( */}
       <RBanner
         maconData={maconData}
         imgSrc={
@@ -43,15 +42,6 @@ const IndexPage = ({ data }) => {
             ?.original?.src || ""
         }
       />
-      {/* ) : (
-        <SBanner
-          maconData={maconData}
-          imgSrc={
-            data?.wpPage?.featuredImage?.node?.localFile?.childImageSharp
-              ?.original?.src || ""
-          }
-        />
-      )} */}
       <About aClass="about_area" maconData={maconData} />
       <Service wClass="work_area" maconData={maconData} />
       <div
