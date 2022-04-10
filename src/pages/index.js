@@ -27,22 +27,28 @@ import Footer from "../component/Footer";
 import maconData from "../assets/maconData";
 
 const IndexPage = ({ data }) => {
+  console.log("img", data.wpPage.frontpage?.logoLight);
   return (
     <div className="body_wrapper">
       <Navbar
-        mContainer="custome_container"
-        mainlogo={maconData.logoWhite}
-        stickylogo={maconData.logoBlack}
+        mainlogo={
+          data.wpPage.frontpage?.logoLight?.localFile?.childImageSharp?.original
+            ?.src
+        }
+        stickylogo={
+          data.wpPage.frontpage?.logoDark?.localFile?.childImageSharp?.original
+            ?.src
+        }
+        phone={data.wpPage.frontpage.contactPhone}
       />
 
       <RBanner
-        maconData={maconData}
+        frontPageData={data.wpPage.frontpage}
         imgSrc={
-          data?.wpPage?.featuredImage?.node?.localFile?.childImageSharp
-            ?.original?.src || ""
+          data.wpPage.featuredImage.node.localFile.childImageSharp.original.src
         }
       />
-      <About aClass="about_area" maconData={maconData} />
+      <About frontPageData={data.wpPage.frontpage} />
       <Service wClass="work_area" maconData={maconData} />
       <div
         style={{
@@ -58,40 +64,19 @@ const IndexPage = ({ data }) => {
         <Reveal effect="fadeInUp" duration={2200}>
           <h4>
             <a
-              href="https://calendly.com/cosmicpools/15min"
+              href={data.wpPage.frontpage.calandlyUrl}
               className="theme_btn active"
               target="_blank"
               rel="noopener noreferrer"
             >
-              Schedule Your Online Consultation
+              {data.wpPage.frontpage.callToActionButtonText}
             </a>
           </h4>
         </Reveal>
       </div>
 
-      <PortfolioSlider maconData={maconData} />
-      {/* <Portfolio maconData={maconData} /> */}
-      {/* <Skill maconData={maconData} /> */}
-
-      {/* {data.allWpPost.nodes.map((node) => (
-        <div>
-          <Link to={node.slug}>
-            <p>{node.title}</p>
-          </Link>
-        </div>
-      ))}
-
-      {data.allWpPage.nodes.map((node) => (
-        <div>
-          <Link to={node.slug}>
-            <p>{node.title}</p>
-          </Link>
-        </div>
-      ))} */}
-
-      <Testimonial maconData={maconData} />
-      {/* <Clientslogo maconData={maconData} /> */}
-      {/* <Blog maconData={maconData} /> */}
+      <PortfolioSlider />
+      <Testimonial />
       <Contact maconData={maconData} />
       <Footer maconData={maconData} />
     </div>
@@ -102,22 +87,54 @@ export default IndexPage;
 
 export const pageQuery = graphql`
   query {
-    allWpPage {
-      nodes {
-        title
-        slug
-      }
-    }
-    allWpPost(sort: { fields: [date] }) {
-      nodes {
-        title
-        slug
-      }
-    }
     wpPage(slug: { eq: "home" }) {
+      frontpage {
+        aboutDescription
+        aboutSubtitle
+        aboutTitle
+        callToActionButtonText
+        contactAddress
+        contactEmail
+        contactPhone
+        copyrightText
+        facebookUrl
+        fieldGroupName
+        instagramUrl
+        linkedinUrl
+        subtitle
+        tagLine
+        title
+        calandlyUrl
+        aboutSectionPhoto {
+          localFile {
+            childImageSharp {
+              original {
+                src
+              }
+            }
+          }
+        }
+        logoDark {
+          localFile {
+            childImageSharp {
+              original {
+                src
+              }
+            }
+          }
+        }
+        logoLight {
+          localFile {
+            childImageSharp {
+              original {
+                src
+              }
+            }
+          }
+        }
+      }
       featuredImage {
         node {
-          uri
           localFile {
             childImageSharp {
               original {
