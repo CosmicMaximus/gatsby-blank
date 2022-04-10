@@ -1,7 +1,7 @@
 import * as React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
+// import { Link, graphql } from "gatsby";
 
-// import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../assets/elagent-icon/style.css";
 import "../assets/etline-icon/style.css";
@@ -22,16 +22,11 @@ import PortfolioSlider from "../component/Portfolio/PortfolioSlider";
 import { Reveal } from "react-reveal/";
 
 import Testimonial from "../component/Testimonial/Testimonial";
-// import Clientslogo from "../component/Clientslogo";
-// import Blog from "../component/Blog/Blog";
 import Contact from "../component/Contact";
-// import Skill from "../component/Skill/Skill";
 import Footer from "../component/Footer";
 import maconData from "../assets/maconData";
 
-// require('../images/Sail-Away.jpg')
 const IndexPage = ({ data }) => {
-  // console.log(data.wpMediaItem.localFile.childImageSharp.original.src);
   return (
     <div className="body_wrapper">
       <Navbar
@@ -39,11 +34,24 @@ const IndexPage = ({ data }) => {
         mainlogo={maconData.logoWhite}
         stickylogo={maconData.logoBlack}
       />
+
+      {/* {typeof window !== "undefined" ? ( */}
       <RBanner
         maconData={maconData}
-        // imgSrc={data.wpMediaItem.localFile.childImageSharp.original.src}
-        imgSrc={""}
+        imgSrc={
+          data?.wpPage?.featuredImage?.node?.localFile?.childImageSharp
+            ?.original?.src || ""
+        }
       />
+      {/* ) : (
+        <SBanner
+          maconData={maconData}
+          imgSrc={
+            data?.wpPage?.featuredImage?.node?.localFile?.childImageSharp
+              ?.original?.src || ""
+          }
+        />
+      )} */}
       <About aClass="about_area" maconData={maconData} />
       <Service wClass="work_area" maconData={maconData} />
       <div
@@ -116,11 +124,16 @@ export const pageQuery = graphql`
         slug
       }
     }
-    wpMediaItem(slug: { eq: "pool2" }) {
-      localFile {
-        childImageSharp {
-          original {
-            src
+    wpPage(slug: { eq: "home" }) {
+      featuredImage {
+        node {
+          uri
+          localFile {
+            childImageSharp {
+              original {
+                src
+              }
+            }
           }
         }
       }

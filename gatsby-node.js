@@ -22,13 +22,14 @@ exports.createPages = ({ graphql, actions }) => {
     }
   `).then((result) => {
     result.data.allWpPage.nodes.forEach((node) => {
-      createPage({
-        path: node.slug,
-        component: path.resolve(`./src/templates/page.js`),
-        context: {
-          slug: node.slug,
-        },
-      });
+      if (node.slug !== "home")
+        createPage({
+          path: node.slug,
+          component: path.resolve(`./src/templates/page.js`),
+          context: {
+            slug: node.slug,
+          },
+        });
     });
 
     result.data.allWpPost.nodes.forEach((node) => {
@@ -41,4 +42,23 @@ exports.createPages = ({ graphql, actions }) => {
       });
     });
   });
+};
+
+exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
+  if (stage === "build-html") {
+    actions.setWebpackConfig({
+      module: {
+        rules: [
+          {
+            test: /jquery.ripples/,
+            use: loaders.null(),
+          },
+          {
+            test: /bootstrap/,
+            use: loaders.null(),
+          },
+        ],
+      },
+    });
+  }
 };

@@ -8,12 +8,21 @@ class Banner extends Component {
     let { bClass, textLeft, imgSrc } = this.props;
     return (
       <section id="home">
+        {/* <div
+          className={`banner_area ${bClass}`}
+          style={{
+            width: "100%",
+            height: "100%",
+            backgroundSize: "cover",
+            background: `url('${imgSrc}')`,
+          }}
+        > */}
         <WaterWave
           strength={500}
           perturbance={0.005}
           className={`banner_area ${bClass}`}
           style={{ width: "100%", height: "100%", backgroundSize: "cover" }}
-          // imageUrl={imgSrc}
+          imageUrl={imgSrc}
         >
           {({ getRootProps }) => (
             <div className="container">
@@ -63,6 +72,7 @@ class Banner extends Component {
             </div>
           )}
         </WaterWave>
+        {/* </div> */}
       </section>
     );
   }
