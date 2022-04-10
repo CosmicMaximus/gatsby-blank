@@ -13,7 +13,7 @@ class Banner extends Component {
           perturbance={0.005}
           className={`banner_area ${bClass}`}
           style={{ width: "100%", height: "100%", backgroundSize: "cover" }}
-          imageUrl={imgSrc}
+          // imageUrl={imgSrc}
         >
           {({ getRootProps }) => (
             <div className="container">

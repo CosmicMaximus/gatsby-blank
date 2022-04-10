@@ -41,7 +41,8 @@ const IndexPage = ({ data }) => {
       />
       <RBanner
         maconData={maconData}
-        imgSrc={data.wpMediaItem.localFile.childImageSharp.original.src}
+        // imgSrc={data.wpMediaItem.localFile.childImageSharp.original.src}
+        imgSrc={""}
       />
       <About aClass="about_area" maconData={maconData} />
       <Service wClass="work_area" maconData={maconData} />
