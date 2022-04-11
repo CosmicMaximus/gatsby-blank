@@ -2,31 +2,32 @@ import React from "react";
 import NavbarSubpage from "../component/Navbar/NavbarSubpage";
 import Contact from "../component/Contact";
 import Footer from "../component/Footer";
-import maconData from "../assets/maconData";
-// import TermsSection from "./component/TermsSection";
-import { graphql, Link } from "gatsby";
+import { graphql } from "gatsby";
 import { Fade } from "react-reveal/";
 
 const Page = ({ data }) => {
   const page = data.allWpPage.nodes[0];
   return (
     <div className="body_wrapper">
-      <NavbarSubpage
-        mContainer="custome_container"
-        mainlogo={maconData.logoWhite}
-        stickylogo={maconData.logoBlack}
-      />
+      <NavbarSubpage />
 
-      <section className="about_area" id="about">
+      <section id="pageContent">
         <div className="container">
           <div className="row">
             <div className="col-lg-12 d-flex align-items-center">
               <Fade bottom cascade duration={1000}>
                 <div
                   className="about_content"
-                  style={{ textAlign: "center", margin: "auto" }}
+                  style={{
+                    textAlign: "center",
+                    margin: "auto",
+                    paddingBottom: 0,
+                  }}
                 >
-                  <h2 className="t_color" style={{ textAlign: "center" }}>
+                  <h2
+                    className="t_color"
+                    style={{ textAlign: "center", marginBottom: 100 }}
+                  >
                     {page.title}
                   </h2>
 
@@ -38,10 +39,8 @@ const Page = ({ data }) => {
         </div>
       </section>
 
-      {/* <div dangerouslySetInnerHTML={{ __html: page.content }} /> */}
-
-      <Contact maconData={maconData} />
-      <Footer maconData={maconData} />
+      <Contact />
+      <Footer />
     </div>
   );
 };

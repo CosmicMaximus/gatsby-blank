@@ -8,7 +8,7 @@
 }
 @media (max-width: 1199px) {
   .about_img img {
-    margin-left: -180px;
+    margin-left: -25px;
   }
   .blog_post .post_content .blog-meta span {
     font-size: 14px;
@@ -409,5 +409,9 @@
   }
   .error_text img {
     top: 29px;
+  }
+
+  .footer-content img {
+    max-width: 90%;
   }
 }

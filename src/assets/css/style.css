@@ -245,6 +245,9 @@ h6 {
   nav.last {
     display: none;
   }
+  .about_area {
+    padding-top: 80px;
+  }
 }
 
 .navbar-collapse {
@@ -666,7 +669,7 @@ h6 {
 /*=========== about_area css ===========*/
 .about_area {
   overflow: hidden;
-  padding-top: 80px;
+  /* padding-top: 80px; */
 }
 
 .about_content {

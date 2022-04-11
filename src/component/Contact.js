@@ -1,60 +1,107 @@
-import React, { Component } from "react";
+import React from "react";
 import { Reveal } from "react-reveal/";
 import Form from "./FormFC";
+import { graphql, StaticQuery } from "gatsby";
 
-class Contact extends Component {
-  render() {
-    let maconData = this.props.maconData;
-    return (
-      <section className="contact-area" id="contact">
-        <div className="container">
-          <div className="row row-reverse">
-            {maconData.contact &&
-              maconData.contact.map((item) => {
-                return (
-                  <React.Fragment key={item.id}>
-                    <div className="col-md-5">
-                      <Reveal effect="fadeInLeft" duration={500}>
-                        <div className="contact_info">
-                          <h4>{item.title}</h4>
-                          <ul className="nav">
-                            {item.menuItems.map((info) => {
-                              return (
-                                <li className="item" key={info.id}>
-                                  <div className="media">
-                                    <a href="/#">
-                                      <i className={info.icon}></i>
-                                    </a>
-                                    <div className="media-body">
-                                      <a href="/#">{info.text}</a>
-                                    </div>
-                                  </div>
-                                </li>
-                              );
-                            })}
-                          </ul>
-                        </div>
-                      </Reveal>
+const Contact = () => {
+  return (
+    <StaticQuery
+      query={graphql`
+        query {
+          wpPage(slug: { eq: "home" }) {
+            frontpage {
+              contactAddress
+              contactEmail
+              contactPhone
+            }
+          }
+        }
+      `}
+      render={(data) => {
+        return (
+          <section className="contact-area" id="contact">
+            <div className="container">
+              <div className="row row-reverse">
+                <div className="col-md-5">
+                  <Reveal effect="fadeInLeft" duration={500}>
+                    <div className="contact_info">
+                      <h4>Contact Info</h4>
+                      <ul className="nav">
+                        <li className="item">
+                          <div className="media">
+                            {/* <a href="/#"> */}
+                            <i className={"icon_pin_alt"}></i>
+                            {/* </a> */}
+                            <div className="media-body">
+                              {/* <a href="/#"> */}
+                              {data.wpPage.frontpage.contactAddress}
+                              {/* </a> */}
+                            </div>
+                          </div>
+                        </li>
+
+                        <li className="item">
+                          <div className="media">
+                            {/* <a href="/#"> */}
+                            <i className={"icon_phone"}></i>
+                            {/* </a> */}
+                            <div className="media-body">
+                              {/* <a href="/#"> */}
+                              {data.wpPage.frontpage.contactPhone}
+                              {/* </a> */}
+                            </div>
+                          </div>
+                        </li>
+
+                        <li className="item">
+                          <div className="media">
+                            {/* <a href="/#"> */}
+                            <i className={"icon_mail"}></i>
+                            {/* </a> */}
+                            <div className="media-body">
+                              {/* <a href="/#"> */}
+                              {data.wpPage.frontpage.contactEmail}
+                              {/* </a> */}
+                            </div>
+                          </div>
+                        </li>
+
+                        <li className="item">
+                          <div className="media">
+                            {/* <a href="/#"> */}
+                            <i className={"icon_globe"}></i>
+                            {/* </a> */}
+                            <div className="media-body">
+                              {/* <a href="/#"> */}
+                              {"cosmicdesign.studio"}
+                              {/* </a> */}
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
                     </div>
-                  </React.Fragment>
-                );
-              })}
-            <div className="col-md-7">
-              <Reveal effect="fadeInRight" duration={800}>
-                <div className="input_form">
-                  <h4>{maconData.contacttitle}</h4>
-                  <Form />
-                  <div id="success">Your message succesfully sent!</div>
-                  <div id="error">
-                    Opps! There is something wrong. Please try again
-                  </div>
+                  </Reveal>
                 </div>
-              </Reveal>
+
+                <div className="col-md-7">
+                  <Reveal effect="fadeInRight" duration={800}>
+                    <div className="input_form">
+                      <h4>{"Contact Form"}</h4>
+                      <Form />
+                      <div id="success">Your message succesfully sent!</div>
+                      <div id="error">
+                        Opps! There is something wrong. Please try again
+                      </div>
+                    </div>
+                  </Reveal>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-}
+          </section>
+        );
+      }}
+    />
+  );
+};
+
 export default Contact;
