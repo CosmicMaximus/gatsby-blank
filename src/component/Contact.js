@@ -2,6 +2,9 @@ import React from "react";
 import { Reveal } from "react-reveal/";
 import Form from "./FormFC";
 import { graphql, StaticQuery } from "gatsby";
+// import loadable from "@loadable/component";
+
+// const LoadableForm = loadable(() => import("./FormFC"));
 
 const Contact = () => {
   return (
@@ -87,6 +90,7 @@ const Contact = () => {
                   <Reveal effect="fadeInRight" duration={800}>
                     <div className="input_form">
                       <h4>{"Contact Form"}</h4>
+                      {/* <LoadableForm /> */}
                       <Form />
                       <div id="success">Your message succesfully sent!</div>
                       <div id="error">

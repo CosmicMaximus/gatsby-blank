@@ -3,6 +3,7 @@ import Sticky from "react-stickynode";
 import { Link } from "react-scroll";
 import { contact } from "../../assets/maconData";
 import { graphql, StaticQuery } from "gatsby";
+import HeadTags from "./HeadTags";
 
 const Navbar = () => (
   <StaticQuery
@@ -36,6 +37,7 @@ const Navbar = () => (
     render={(data) => {
       return (
         <div className="navbar_fixed subpage">
+          <HeadTags />
           <Sticky top={0} innerZ={9999} activeClass="navbar_fixed">
             <nav className={`navbar navbar-expand-lg navbar-light first`}>
               <div className={`container custome_container`}>
