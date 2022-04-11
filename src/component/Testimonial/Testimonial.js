@@ -6,7 +6,7 @@ const Testimonial = () => {
   return (
     <section id="testimonial">
       <Parallax
-        bgImage={require("../../images/portfolio/img-3.jpg")}
+        // bgImage={require("../../images/portfolio/img-3.jpg")}
         strength={280}
         className="testimonial_area"
       >

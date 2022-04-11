@@ -1102,7 +1102,7 @@ h6 {
 .testimonial_area {
   background: url("../../images/portfolio/img-3.jpg") no-repeat scroll center 0 /
     cover;
-  position: relative;
+  background-position: center;
   z-index: 1;
   padding: 120px 0px;
 }
