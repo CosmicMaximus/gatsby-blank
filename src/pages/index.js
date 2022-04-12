@@ -1,17 +1,5 @@
 import * as React from "react";
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "../assets/elagent-icon/style.css";
-import "../assets/etline-icon/style.css";
-import "../assets/flaticon/flaticon.css";
-import "../assets/css/animate.css";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import "../assets/css/style.css";
-import "../assets/css/responsive.css";
-import "bootstrap/dist/js/bootstrap.min.js";
-import "popper.js";
-
 import Navbar from "../component/Navbar/Navbar";
 import RBanner from "../component/Banner/RippleBanner";
 import About from "../component/About";

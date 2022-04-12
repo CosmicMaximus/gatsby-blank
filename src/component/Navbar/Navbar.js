@@ -35,7 +35,7 @@ const Navbar = () => (
     `}
     render={(data) => {
       return (
-        <Sticky top={0} innerZ={9999} activeClass="navbar_fixed">
+        <Sticky top={0} innerZ={1198} activeClass="navbar_fixed">
           <HeadTags />
           <nav className={`navbar navbar-expand-lg navbar-light first`}>
             <div className={`container custome_container`}>

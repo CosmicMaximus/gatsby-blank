@@ -6,7 +6,7 @@ class NavbarTwo extends Component {
   render() {
     var { mClass, mContainer, mainlogo, stickylogo } = this.props;
     return (
-      <Sticky top={0} innerZ={9999} activeClass="navbar_fixed">
+      <Sticky top={0} innerZ={1198} activeClass="navbar_fixed">
         <nav className={`navbar navbar-expand-lg navbar-light ${mClass}`}>
           <div className={`container ${mContainer}`}>
             <a className="navbar-brand logo_h" href="index.html">

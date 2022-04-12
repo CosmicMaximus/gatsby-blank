@@ -22,7 +22,7 @@ exports.createPages = ({ graphql, actions }) => {
     }
   `).then((result) => {
     result.data.allWpPage.nodes.forEach((node) => {
-      if (node.slug !== "home")
+      if (node.slug !== "home" && node.slug !== "gallery")
         createPage({
           path: node.slug,
           component: path.resolve(`./src/templates/page.js`),
