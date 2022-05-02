@@ -1,6 +1,8 @@
 import React from "react";
 import Sticky from "react-stickynode";
 import { Link } from "react-scroll";
+import { Link as PageLink } from "gatsby";
+
 import { graphql, StaticQuery } from "gatsby";
 import HeadTags from "./HeadTags";
 
@@ -147,7 +149,7 @@ const Navbar = () => (
                       offset={-86}
                       duration={500}
                     >
-                      Portfolio
+                      <PageLink to="/gallery">Portfolio</PageLink>
                     </Link>
                   </li>
                   <li className="nav-item">
@@ -281,13 +283,13 @@ const Navbar = () => (
                     <Link
                       className="nav-link"
                       activeClass="active"
-                      to="portfolio"
+                      // to="portfolio"
                       spy={true}
                       smooth={true}
                       offset={-86}
                       duration={500}
                     >
-                      Portfolio
+                      <PageLink to="/gallery">Portfolio</PageLink>
                     </Link>
                   </li>
                   <li className="nav-item">

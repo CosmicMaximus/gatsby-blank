@@ -1,7 +1,7 @@
 import React from "react";
 import SectionTitleTwo from "../Banner/SectionTitleTwo";
 import Slider from "react-slick";
-import { graphql, StaticQuery } from "gatsby";
+import { graphql, StaticQuery, Link } from "gatsby";
 
 const PortfolioSlider = () => {
   return (
@@ -74,6 +74,20 @@ const PortfolioSlider = () => {
                 stitle="Portfolio"
                 btitle="Some of our latest work"
               />
+              <div style={{ margin: "0 auto", paddingBottom: 40 }}>
+                <Link to="/gallery">
+                  <h5
+                    style={{
+                      color: "#007bff",
+                      textAlign: "center",
+                      // marginBottom: 40,
+                    }}
+                  >
+                    View the Gallery
+                  </h5>
+                </Link>
+              </div>
+
               <Slider {...settings} className="portfolio_slider">
                 {data.allWpPortfolio.nodes.map((node) => (
                   <div className="p_item">

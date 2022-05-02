@@ -23,6 +23,7 @@
     "@loadable/component": "^5.15.2",
     "acorn": "^8.7.0",
     "animejs": "^3.1.0",
+    "axios": "^0.26.1",
     "babel-eslint": "^10.1.0",
     "bootstrap": "^4.3.1",
     "emailjs-com": "^2.6.3",

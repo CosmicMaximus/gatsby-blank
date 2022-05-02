@@ -11,7 +11,7 @@ const Page = ({ data }) => {
   const page = data.wpPage;
   const galleryImages = data.allWpGalleryImages.nodes;
 
-  console.log(galleryImages);
+  // console.log(galleryImages);
 
   const photos = galleryImages.map((img) => {
     const content = img.featuredImage.node.localFile.childImageSharp.original;

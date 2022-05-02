@@ -2,8 +2,27 @@ import React from "react";
 import { Reveal } from "react-reveal/";
 import WaterWave from "react-water-wave";
 import { graphql, StaticQuery } from "gatsby";
+import axios from "axios";
+import { Buffer } from "buffer";
 
 const Banner = () => {
+  const getBase64 = async (url) => {
+    return axios
+      .get(url, {
+        responseType: "arraybuffer",
+      })
+      .then((response) =>
+        Buffer.from(response.data, "binary").toString("base64")
+      )
+      .then((decoded) => {
+        setImgData(decoded);
+        // console.log(decoded)
+      })
+      .catch(() => console.log("error loading img"));
+  };
+
+  const [imgData, setImgData] = React.useState(undefined);
+
   return (
     <StaticQuery
       query={graphql`
@@ -34,17 +53,24 @@ const Banner = () => {
         }
       `}
       render={(data) => {
+        getBase64(
+          data.wpPage.featuredImage.node.localFile.childImageSharp.original.src
+        );
+
         return (
           <section id="home">
             <WaterWave
               strength={500}
               perturbance={0.005}
-              className={`banner_area`}
-              style={{ width: "100%", height: "100%", backgroundSize: "cover" }}
-              imageUrl={
-                data.wpPage.featuredImage.node.localFile.childImageSharp
-                  .original.src
+              className={
+                imgData === undefined ? `banner_area` : `banner_area_loaded`
               }
+              style={{
+                width: "100%",
+                height: "100%",
+                backgroundSize: "cover",
+              }}
+              imageUrl={"data:image/png;base64," + imgData}
             >
               {({ getRootProps }) => (
                 <div className="container">

@@ -56,8 +56,10 @@ Table of Content:
   margin-bottom: 200px;
 }
 
-a {
+a,
+a:hover {
   text-decoration: none;
+  color: unset;
 }
 
 a:hover,
@@ -517,6 +519,7 @@ h6 {
 /*----------------------------------------------------*/
 /*========== banner_area css =========*/
 .banner_area,
+.banner_area_loaded,
 .banner_area_two {
   min-height: 100vh;
   position: relative;
@@ -547,9 +550,25 @@ h6 {
   height: 100%;
   top: 0;
   left: 0;
-  background: url("../../images/grid-70.png") no-repeat scroll center 0 / cover;
+  background: url("../../images/grid-70.png") no-repeat scroll center 0 / cover,
+    rgba(0, 0, 0, 1);
+  transform: "transition: background 2s";
   z-index: 0;
 }
+
+.banner_area_loaded:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: "transition: background 2s";
+  background: url("../../images/grid-70.png") no-repeat scroll center 0 / cover,
+    rgba(0, 0, 0, 0);
+  z-index: 0;
+}
+
 .particle {
   position: absolute;
   width: 100%;
