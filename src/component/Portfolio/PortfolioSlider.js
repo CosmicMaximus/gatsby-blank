@@ -88,11 +88,10 @@ const PortfolioSlider = () => {
                 </Link>
               </div>
 
-              <Slider {...settings} className="portfolio_slider">
+              {/* <Slider {...settings} className="portfolio_slider">
                 {data.allWpPortfolio.nodes.map((node) => (
                   <div className="p_item">
                     <div className="portfolio_content">
-                      {/* <a href="./"> */}
                       <img
                         src={
                           node.portfolio.photo.localFile.childImageSharp
@@ -100,7 +99,7 @@ const PortfolioSlider = () => {
                         }
                         alt=""
                       />
-                      {/* </a> */}
+
                       <div className="text">
                         <h4>{node.portfolio.title}</h4>
                         <p>{node.portfolio.description}</p>
@@ -108,7 +107,7 @@ const PortfolioSlider = () => {
                     </div>
                   </div>
                 ))}
-              </Slider>
+              </Slider> */}
             </div>
           </section>
         );

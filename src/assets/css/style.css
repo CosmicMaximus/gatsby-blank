@@ -56,10 +56,8 @@ Table of Content:
   margin-bottom: 200px;
 }
 
-a,
-a:hover {
+a {
   text-decoration: none;
-  color: unset;
 }
 
 a:hover,
@@ -302,7 +300,8 @@ h6 {
   margin-left: 35px;
 }
 
-.navbar .navbar-nav .nav-item .nav-link {
+.navbar .navbar-nav .nav-item .nav-link,
+.navbar .navbar-nav .nav-item .nav-link a {
   font: 600 14px/30px "Montserrat", sans-serif;
   color: #fff;
   text-transform: uppercase;
@@ -417,7 +416,7 @@ h6 {
   transition: all 0.3s linear;
 }
 
-.navbar_fixed .navbar .navbar-nav .nav-item .nav-link {
+.navbar_fixed .navbar .navbar-nav .nav-item .nav-link, .navbar_fixed .navbar .navbar-nav .nav-item .nav-link a {
   color: #040c2c;
 }
 
