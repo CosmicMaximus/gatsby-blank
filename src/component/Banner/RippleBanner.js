@@ -107,7 +107,7 @@ const Banner = () => {
                         <h5>{data.wpPage.frontpage.tagLine}</h5>
                       </Reveal>
                       <Reveal effect="fadeInUp" duration={1500}>
-                        <h1 className="wow fadeInLeft animated">
+                        <h1 className="wow fadeInUp animated">
                           {data.wpPage.frontpage.title}
                         </h1>
                       </Reveal>
