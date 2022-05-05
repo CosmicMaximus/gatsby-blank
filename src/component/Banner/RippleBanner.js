@@ -5,16 +5,18 @@ import { graphql, StaticQuery } from "gatsby";
 import axios from "axios";
 import { Buffer } from "buffer";
 
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated, easings } from "react-spring";
 
 const Banner = () => {
   const [styles, api] = useSpring(() => ({
-    backgroundColor: "#000",
-    position: "absolute",
-    width: "100vw",
-    height: "100vh",
-    zIndex: 0,
-    opacity: 1,
+    to: {
+      backgroundColor: "#000",
+      position: "absolute",
+      width: "100vw",
+      height: "100vh",
+      zIndex: 0,
+      opacity: 1,
+    },
   }));
 
   const getBase64 = async (url) => {
@@ -29,12 +31,16 @@ const Banner = () => {
         setImgData(decoded);
         // console.log(decoded)
         api.start({
-          backgroundColor: "#000",
-          position: "absolute",
-          width: "100vw",
-          height: "100vh",
-          zIndex: 0,
-          opacity: 0,
+          to: {
+            backgroundColor: "#000",
+            position: "absolute",
+            width: "100vw",
+            height: "100vh",
+            zIndex: 0,
+            opacity: 0,
+          },
+          delay: 100,
+          config: { duration: 1000, easing: easings.easeOutQuart },
         });
       })
       .catch(() => console.log("error loading img"));
@@ -81,15 +87,17 @@ const Banner = () => {
             <WaterWave
               strength={500}
               perturbance={0.005}
-              className={
-                imgData === undefined ? `banner_area` : `banner_area_loaded`
-              }
+              className={`banner_area_loaded`}
               style={{
                 width: "100%",
                 height: "100%",
                 backgroundSize: "cover",
               }}
-              imageUrl={"data:image/png;base64," + imgData}
+              imageUrl={
+                // data.wpPage.featuredImage.node.localFile.childImageSharp
+                //   .original.src
+                "data:image/png;base64," + imgData
+              }
             >
               {({ getRootProps }) => (
                 <>
