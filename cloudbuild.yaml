@@ -1,0 +1,11 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    args:
+      [
+        "build",
+        "-t",
+        "us-east1-docker.pkg.dev/gumroad-killer/quickstart-docker-repo/quickstart-image:cosmic",
+        ".",
+      ]
+images:
+  - "us-east1-docker.pkg.dev/gumroad-killer/quickstart-docker-repo/quickstart-image:cosmic"
