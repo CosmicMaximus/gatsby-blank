@@ -35,7 +35,9 @@ const Banner = () => {
   };
 
   const getBase64 = async (url) => {
-    const decoded = await urlContentToDataUri(url);
+    const decoded = await urlContentToDataUri(
+      window.location.href.slice(0, -1) + url
+    );
 
     setImgData(decoded);
     // console.log(decoded)
