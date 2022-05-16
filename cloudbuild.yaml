@@ -4,8 +4,8 @@ steps:
       [
         "build",
         "-t",
-        "us-east1-docker.pkg.dev/gumroad-killer/quickstart-docker-repo/quickstart-image:cosmic",
+        "us-east1-docker.pkg.dev/gumroad-killer/cosmic:cloudbuild",
         ".",
       ]
 images:
-  - "us-east1-docker.pkg.dev/gumroad-killer/quickstart-docker-repo/quickstart-image:cosmic"
+  - "us-east1-docker.pkg.dev/gumroad-killer/cosmic:cloudbuild"
