@@ -87,9 +87,12 @@ const Banner = () => {
         }
       `}
       render={(data) => {
-        getBase64(
-          data.wpPage.featuredImage.node.localFile.childImageSharp.original.src
-        );
+        React.useEffect(() => {
+          getBase64(
+            data.wpPage.featuredImage.node.localFile.childImageSharp.original
+              .src
+          );
+        }, []);
 
         return (
           <section id="home">
