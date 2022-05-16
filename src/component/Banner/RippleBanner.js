@@ -19,31 +19,38 @@ const Banner = () => {
     },
   }));
 
+  const urlContentToDataUri = (url) => {
+    return fetch(url)
+      .then((response) => response.blob())
+      .then(
+        (blob) =>
+          new Promise((callback) => {
+            let reader = new FileReader();
+            reader.onload = function () {
+              callback(this.result);
+            };
+            reader.readAsDataURL(blob);
+          })
+      );
+  };
+
   const getBase64 = async (url) => {
-    return axios
-      .get(url, {
-        responseType: "arraybuffer",
-      })
-      .then((response) =>
-        Buffer.from(response.data, "binary").toString("base64")
-      )
-      .then((decoded) => {
-        setImgData(decoded);
-        // console.log(decoded)
-        api.start({
-          to: {
-            backgroundColor: "#000",
-            position: "absolute",
-            width: "100vw",
-            height: "100vh",
-            zIndex: 0,
-            opacity: 0,
-          },
-          delay: 100,
-          config: { duration: 1000, easing: easings.easeOutQuart },
-        });
-      })
-      .catch(() => console.log("error loading img"));
+    const decoded = await urlContentToDataUri(url);
+
+    setImgData(decoded);
+    // console.log(decoded)
+    api.start({
+      to: {
+        backgroundColor: "#000",
+        position: "absolute",
+        width: "100vw",
+        height: "100vh",
+        zIndex: 0,
+        opacity: 0,
+      },
+      delay: 100,
+      config: { duration: 1000, easing: easings.easeOutQuart },
+    });
   };
 
   const [imgData, setImgData] = React.useState(undefined);
@@ -96,7 +103,8 @@ const Banner = () => {
               imageUrl={
                 // data.wpPage.featuredImage.node.localFile.childImageSharp
                 //   .original.src
-                "data:image/png;base64," + imgData
+                // "data:image/png;base64," + imgData
+                imgData
               }
             >
               {({ getRootProps }) => (

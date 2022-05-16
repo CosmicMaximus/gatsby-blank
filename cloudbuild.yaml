@@ -9,3 +9,4 @@ steps:
       ]
 images:
   - "us-east1-docker.pkg.dev/gumroad-killer/cosmic/cosmic:cloudbuild"
+timeout: "900s"
