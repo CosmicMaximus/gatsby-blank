@@ -7,7 +7,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: "https://cosmicdesign.flywheelsites.com/graphql",
+        url: "https://10.142.0.2/graphql",
       },
     },
     {
