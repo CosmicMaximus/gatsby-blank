@@ -20,6 +20,7 @@ const Banner = () => {
   }));
 
   const urlContentToDataUri = (url) => {
+    console.log(url);
     return fetch(url)
       .then((response) => response.blob())
       .then(
@@ -36,7 +37,8 @@ const Banner = () => {
 
   const getBase64 = async (url) => {
     const decoded = await urlContentToDataUri(
-      window.location.href.slice(0, -1) + url
+      // window.location.href.slice(0, -1) + url
+      url
     );
 
     setImgData(decoded);
@@ -74,6 +76,7 @@ const Banner = () => {
             }
             featuredImage {
               node {
+                sourceUrl
                 localFile {
                   childImageSharp {
                     original {
@@ -92,6 +95,7 @@ const Banner = () => {
             getBase64(
               data.wpPage.featuredImage.node.localFile.childImageSharp.original
                 .src
+              // data.wpPage.featuredImage.node.sourceUrl
             );
           } catch (err) {
             console.log('hero image failed');
