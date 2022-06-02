@@ -1,19 +1,19 @@
-import React from "react";
-import { Reveal } from "react-reveal/";
-import WaterWave from "react-water-wave";
-import { graphql, StaticQuery } from "gatsby";
-import axios from "axios";
-import { Buffer } from "buffer";
+import React from 'react';
+import { Reveal } from 'react-reveal/';
+import WaterWave from 'react-water-wave';
+import { graphql, StaticQuery } from 'gatsby';
+import axios from 'axios';
+import { Buffer } from 'buffer';
 
-import { useSpring, animated, easings } from "react-spring";
+import { useSpring, animated, easings } from 'react-spring';
 
 const Banner = () => {
   const [styles, api] = useSpring(() => ({
     to: {
-      backgroundColor: "#000",
-      position: "absolute",
-      width: "100vw",
-      height: "100vh",
+      backgroundColor: '#000',
+      position: 'absolute',
+      width: '100vw',
+      height: '100vh',
       zIndex: 0,
       opacity: 1,
     },
@@ -43,10 +43,10 @@ const Banner = () => {
     // console.log(decoded)
     api.start({
       to: {
-        backgroundColor: "#000",
-        position: "absolute",
-        width: "100vw",
-        height: "100vh",
+        backgroundColor: '#000',
+        position: 'absolute',
+        width: '100vw',
+        height: '100vh',
         zIndex: 0,
         opacity: 0,
       },
@@ -88,10 +88,14 @@ const Banner = () => {
       `}
       render={(data) => {
         React.useEffect(() => {
-          getBase64(
-            data.wpPage.featuredImage.node.localFile.childImageSharp.original
-              .src
-          );
+          try {
+            getBase64(
+              data.wpPage.featuredImage.node.localFile.childImageSharp.original
+                .src
+            );
+          } catch (err) {
+            console.log('hero image failed');
+          }
         }, []);
 
         return (
@@ -101,9 +105,9 @@ const Banner = () => {
               perturbance={0.005}
               className={`banner_area_loaded`}
               style={{
-                width: "100%",
-                height: "100%",
-                backgroundSize: "cover",
+                width: '100%',
+                height: '100%',
+                backgroundSize: 'cover',
               }}
               imageUrl={
                 // data.wpPage.featuredImage.node.localFile.childImageSharp
