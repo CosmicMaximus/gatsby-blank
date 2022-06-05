@@ -39,13 +39,10 @@ const Banner = () => {
   };
 
   const getBase64 = async (url) => {
-    const decoded = await urlContentToDataUri(
-      // window.location.href.slice(0, -1) + url
-      url
-    );
+    const decoded = await urlContentToDataUri(url);
 
     setImgData(decoded);
-    // console.log(decoded)
+
     api.start({
       to: {
         backgroundColor: '#000',
@@ -88,7 +85,20 @@ const Banner = () => {
       render={(data) => {
         React.useEffect(() => {
           try {
-            getBase64(data?.wpPage?.featuredImage?.node?.sourceUrl);
+            let url = data?.wpPage?.featuredImage?.node?.sourceUrl;
+
+            if (window.location.href.toString().indexOf('https') === -1) {
+              // not https
+              if (url.indexOf('https') !== -1) {
+                url = url.replace('https', 'http');
+              }
+            } else {
+              // is https
+              if (url.indexOf('https') === -1) {
+                url = url.replace('http', 'https');
+              }
+            }
+            getBase64(url);
           } catch (err) {
             console.log('hero image failed');
           }
