@@ -8,9 +8,14 @@ FROM node:14 AS builder
 WORKDIR /app
 # Copy all files from current directory to working dir in image
 COPY . .
-# install node modules and build assets
-RUN yarn install && yarn build
-
+# Access environment variable
+ARG GATSBY_API_URL
+# install node modules
+RUN yarn install 
+# write production env file
+RUN yarn create-env
+# build assets
+RUN yarn build
 # nginx state for serving content
 FROM nginx:alpine
 # Set working directory to nginx asset directory

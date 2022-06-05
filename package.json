@@ -12,7 +12,8 @@
     "start": "set GATSBY_CONCURRENT_DOWNLOAD=5&& gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "create-env": "printenv > .env.production"
   },
   "eslintConfig": {
     "extends": "react-app"
