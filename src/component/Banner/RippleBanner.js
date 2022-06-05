@@ -20,7 +20,6 @@ const Banner = () => {
   }));
 
   const urlContentToDataUri = (url) => {
-    console.log(url);
     return fetch(url)
       .then((response) => response.blob())
       .then(
@@ -32,14 +31,16 @@ const Banner = () => {
             };
             reader.readAsDataURL(blob);
           })
-      )
-      .catch((err) => {
-        console.log('error fetching photo: ', err);
-      });
+      );
   };
 
-  const getBase64 = async (url) => {
-    const decoded = await urlContentToDataUri(url);
+  const getBase64 = async (url, url2) => {
+    let decoded = '';
+    try {
+      decoded = await urlContentToDataUri(url);
+    } catch (err) {
+      decoded = await urlContentToDataUri(url2);
+    }
 
     setImgData(decoded);
 
@@ -77,6 +78,13 @@ const Banner = () => {
             featuredImage {
               node {
                 sourceUrl
+                localFile {
+                  childImageSharp {
+                    original {
+                      src
+                    }
+                  }
+                }
               }
             }
           }
@@ -84,24 +92,25 @@ const Banner = () => {
       `}
       render={(data) => {
         React.useEffect(() => {
-          try {
-            let url = data?.wpPage?.featuredImage?.node?.sourceUrl;
+          let url = data?.wpPage?.featuredImage?.node?.sourceUrl;
+          let url2 =
+            data?.wpPage?.featuredImage?.node?.localFile?.childImageSharp
+              ?.original?.src;
 
-            if (window.location.href.toString().indexOf('https') === -1) {
-              // not https
-              if (url.indexOf('https') !== -1) {
-                url = url.replace('https', 'http');
-              }
-            } else {
-              // is https
-              if (url.indexOf('https') === -1) {
-                url = url.replace('http', 'https');
-              }
+          if (window.location.href.toString().indexOf('https') === -1) {
+            // not https
+            if (url.indexOf('https') !== -1) {
+              url = url.replace('https', 'http');
+              url2 = url2.replace('https', 'http');
             }
-            getBase64(url);
-          } catch (err) {
-            console.log('hero image failed');
+          } else {
+            // is https
+            if (url.indexOf('https') === -1) {
+              url = url.replace('http', 'https');
+              url2 = url2.replace('http', 'https');
+            }
           }
+          getBase64(url, url2);
         }, []);
 
         return (
