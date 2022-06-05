@@ -1,9 +1,9 @@
-import React from "react";
-import Sticky from "react-stickynode";
-import { Link } from "react-scroll";
-import { contact } from "../../assets/maconData";
-import { graphql, StaticQuery } from "gatsby";
-import HeadTags from "./HeadTags";
+import React from 'react';
+import Sticky from 'react-stickynode';
+import { Link } from 'react-scroll';
+import { contact } from '../../assets/maconData';
+import { graphql, StaticQuery } from 'gatsby';
+import HeadTags from './HeadTags';
 
 const Navbar = () => (
   <StaticQuery
@@ -13,22 +13,10 @@ const Navbar = () => (
           frontpage {
             contactPhone
             logoDark {
-              localFile {
-                childImageSharp {
-                  original {
-                    src
-                  }
-                }
-              }
+              sourceUrl
             }
             logoLight {
-              localFile {
-                childImageSharp {
-                  original {
-                    src
-                  }
-                }
-              }
+              sourceUrl
             }
           }
         }
@@ -43,20 +31,14 @@ const Navbar = () => (
               <div className={`container custome_container`}>
                 <a className="navbar-brand logo_h" href="/">
                   <img
-                    src={
-                      data.wpPage.frontpage.logoLight.localFile.childImageSharp
-                        .original.src
-                    }
+                    src={data?.wpPage?.frontpage?.logoLight?.sourceUrl}
                     alt=""
-                    style={{ width: 120, height: "auto" }}
+                    style={{ width: 120, height: 'auto' }}
                   />
                   <img
-                    src={
-                      data.wpPage.frontpage.logoDark.localFile.childImageSharp
-                        .original.src
-                    }
+                    src={data?.wpPage?.frontpage?.logoDark?.sourceUrl}
                     alt=""
-                    style={{ width: 120, height: "auto" }}
+                    style={{ width: 120, height: 'auto' }}
                   />
                 </a>
                 {/* <a
@@ -70,7 +52,7 @@ const Navbar = () => (
                   <ul className="nav navbar-nav navbar-right first">
                     <li className="navText">Call Today</li>
                     <li className="navText">
-                      <a href={`tel: + ${contact.phone}`.replaceAll("-", "")}>
+                      <a href={`tel: + ${contact.phone}`.replaceAll('-', '')}>
                         {contact.phone}
                       </a>
                     </li>
@@ -154,20 +136,14 @@ const Navbar = () => (
               <div className={`container custome_container`}>
                 <a className="navbar-brand logo_h" href="/">
                   <img
-                    src={
-                      data.wpPage.frontpage.logoLight.localFile.childImageSharp
-                        .original.src
-                    }
+                    src={data?.wpPage?.frontpage?.logoLight?.sourceUrl}
                     alt=""
-                    style={{ width: 120, height: "auto" }}
+                    style={{ width: 120, height: 'auto' }}
                   />
                   <img
-                    src={
-                      data.wpPage.frontpage.logoDark.localFile.childImageSharp
-                        .original.src
-                    }
+                    src={data?.wpPage?.frontpage?.logoDark?.sourceUrl}
                     alt=""
-                    style={{ width: 120, height: "auto" }}
+                    style={{ width: 120, height: 'auto' }}
                   />
                 </a>
                 {/* <a
@@ -252,7 +228,7 @@ const Navbar = () => (
                   <ul className="nav navbar-nav navbar-right last">
                     <li className="navText">Call Today</li>
                     <li className="navText">
-                      <a href={`tel: + ${contact.phone}`.replaceAll("-", "")}>
+                      <a href={`tel: + ${contact.phone}`.replaceAll('-', '')}>
                         {contact.phone}
                       </a>
                     </li>

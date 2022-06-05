@@ -32,7 +32,10 @@ const Banner = () => {
             };
             reader.readAsDataURL(blob);
           })
-      );
+      )
+      .catch((err) => {
+        console.log('error fetching photo: ', err);
+      });
   };
 
   const getBase64 = async (url) => {
@@ -77,13 +80,6 @@ const Banner = () => {
             featuredImage {
               node {
                 sourceUrl
-                localFile {
-                  childImageSharp {
-                    original {
-                      src
-                    }
-                  }
-                }
               }
             }
           }
@@ -92,11 +88,7 @@ const Banner = () => {
       render={(data) => {
         React.useEffect(() => {
           try {
-            getBase64(
-              data.wpPage.featuredImage.node.localFile.childImageSharp.original
-                .src
-              // data.wpPage.featuredImage.node.sourceUrl
-            );
+            getBase64(data?.wpPage?.featuredImage?.node?.sourceUrl);
           } catch (err) {
             console.log('hero image failed');
           }
@@ -114,8 +106,7 @@ const Banner = () => {
                 backgroundSize: 'cover',
               }}
               imageUrl={
-                // data.wpPage.featuredImage.node.localFile.childImageSharp
-                //   .original.src
+                // data?.wpPage?.featuredImage?.node?.localFile?.sourceUrl
                 // "data:image/png;base64," + imgData
                 imgData
               }

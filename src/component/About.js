@@ -1,7 +1,7 @@
-import React from "react";
-import { Link as ScrollLink } from "react-scroll";
-import { Fade, Reveal } from "react-reveal/";
-import { graphql, StaticQuery } from "gatsby";
+import React from 'react';
+import { Link as ScrollLink } from 'react-scroll';
+import { Fade, Reveal } from 'react-reveal/';
+import { graphql, StaticQuery } from 'gatsby';
 
 const About = () => (
   <StaticQuery
@@ -13,13 +13,7 @@ const About = () => (
             aboutSubtitle
             aboutDescription
             aboutSectionPhoto {
-              localFile {
-                childImageSharp {
-                  original {
-                    src
-                  }
-                }
-              }
+              sourceUrl
             }
           }
         }
@@ -56,8 +50,7 @@ const About = () => (
                   <Reveal effect="fadeInRight" duration={1500}>
                     <img
                       src={
-                        data.wpPage.frontpage.aboutSectionPhoto.localFile
-                          .childImageSharp.original.src
+                        data?.wpPage?.frontpage?.aboutSectionPhoto?.sourceUrl
                       }
                       alt=""
                     />

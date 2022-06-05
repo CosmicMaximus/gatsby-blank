@@ -1,6 +1,6 @@
-import React from "react";
-import { graphql, StaticQuery } from "gatsby";
-import { Fade } from "react-reveal/";
+import React from 'react';
+import { graphql, StaticQuery } from 'gatsby';
+import { Fade } from 'react-reveal/';
 
 const Footer = () => {
   return (
@@ -26,13 +26,7 @@ const Footer = () => {
               title
               calandlyUrl
               logoLight {
-                localFile {
-                  childImageSharp {
-                    original {
-                      src
-                    }
-                  }
-                }
+                sourceUrl
               }
             }
           }
@@ -45,10 +39,7 @@ const Footer = () => {
               <div className="footer-content">
                 {/* <Link to="/" className="logo wow fadeInDown" data-wow-delay="0.4s"> */}
                 <img
-                  src={
-                    data.wpPage.frontpage.logoLight.localFile.childImageSharp
-                      .original.src
-                  }
+                  src={data?.wpPage?.frontpage?.logoLight?.sourceUrl}
                   alt=""
                 />
                 {/* </Link> */}
@@ -58,9 +49,9 @@ const Footer = () => {
                       <li key="facebook">
                         <a
                           href={data.wpPage.frontpage.facebookUrl}
-                          target={"_blank"}
+                          target={'_blank'}
                         >
-                          <i className={"social_facebook"}></i>
+                          <i className={'social_facebook'}></i>
                         </a>
                       </li>
                     )}
@@ -68,9 +59,9 @@ const Footer = () => {
                       <li key="instagram">
                         <a
                           href={data.wpPage.frontpage.instagramUrl}
-                          target={"_blank"}
+                          target={'_blank'}
                         >
-                          <i className={"social_instagram"}></i>
+                          <i className={'social_instagram'}></i>
                         </a>
                       </li>
                     )}
@@ -78,9 +69,9 @@ const Footer = () => {
                       <li key="linkedin">
                         <a
                           href={data.wpPage.frontpage.linkedinUrl}
-                          target={"_blank"}
+                          target={'_blank'}
                         >
-                          <i className={"social_linkedin"}></i>
+                          <i className={'social_linkedin'}></i>
                         </a>
                       </li>
                     )}
